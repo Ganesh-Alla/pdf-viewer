@@ -56,7 +56,7 @@ export const useCanvasLayer = ({ background }: { background?: string }) => {
     return () => {
       void renderingTask.cancel();
     };
-  }, [pdfPageProxy, dpr, zoom]);
+  }, [pdfPageProxy, dpr, zoom, background]);
 
   return {
     canvasRef,

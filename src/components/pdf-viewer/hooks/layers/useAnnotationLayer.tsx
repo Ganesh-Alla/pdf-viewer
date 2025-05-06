@@ -1,5 +1,5 @@
 import { AnnotationLayer } from "pdfjs-dist";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 import { usePdf } from "../../internal";
 import { cancellable } from "../../lib/cancellable";
@@ -36,7 +36,7 @@ const defaultAnnotationLayerParams = {
 } satisfies Required<AnnotationLayerParams>;
 
 export const useAnnotationLayer = (params: AnnotationLayerParams) => {
-  const mergedParams = { ...defaultAnnotationLayerParams, ...params };
+  const mergedParams = useMemo(() => ({ ...defaultAnnotationLayerParams, ...params }), [params]);
   const annotationLayerRef = useRef<HTMLDivElement>(null);
   const annotationLayerObjectRef = useRef<AnnotationLayer | null>(null);
   const linkService = usePDFLinkService();
@@ -206,7 +206,8 @@ export const useAnnotationLayer = (params: AnnotationLayerParams) => {
             linkService,
           });
           
-        } catch (_error) {
+        } catch (error) {
+          console.error(error);
           // Silently handle rendering errors
         }
       })(),

@@ -145,7 +145,8 @@ export class LinkService implements IPDFLinkService {
         try {
           const refProxy = destRef as RefProxy;
           pageIndex = await this.pdfDocumentProxy.getPageIndex(refProxy);
-        } catch (_error) {
+        } catch (error) {
+          console.error(error);
           return;
         }
       } else {

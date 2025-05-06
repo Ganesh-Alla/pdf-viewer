@@ -11,7 +11,9 @@ export const ZoomIn = ({ ...props }: HTMLProps<HTMLButtonElement>) => {
       {...props}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       onClick={(e: any) => {
-        props.onClick && props.onClick(e);
+        if (props.onClick) {
+          props.onClick(e);
+        }
         setZoom((zoom) => Number((zoom + 0.1).toFixed(1)));
       }}
     />
@@ -26,7 +28,9 @@ export const ZoomOut = ({ ...props }: HTMLProps<HTMLButtonElement>) => {
       {...props}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       onClick={(e: any) => {
-        props.onClick && props.onClick(e);
+        if (props.onClick) {
+          props.onClick(e);
+        }
         setZoom((zoom) => Number((zoom - 0.1).toFixed(1)));
       }}
     />

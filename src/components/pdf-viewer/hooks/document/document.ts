@@ -45,7 +45,7 @@ export const usePDFDocumentContext = ({
   zoom = 1,
   zoomOptions,
 }: usePDFDocumentParams) => {
-  const [_, setProgress] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   const [initialState, setInitialState] = useState<InitialPDFState | null>();
   const [rotation] = useState<number>(initialRotation);
@@ -125,5 +125,6 @@ export const usePDFDocumentContext = ({
 
   return {
     initialState,
+    progress,
   };
 };

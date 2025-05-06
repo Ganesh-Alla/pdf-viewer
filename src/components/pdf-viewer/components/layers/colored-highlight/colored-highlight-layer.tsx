@@ -36,7 +36,7 @@ export const ColoredHighlightLayer = ({
       addColoredHighlight(highlight);
       if (onHighlight) onHighlight(highlight);
     }
-  }, []);
+  }, [addColoredHighlight, getSelection, onHighlight]);
 
   return (
     <div className="colored-highlights-layer">

@@ -46,7 +46,9 @@ export const CurrentPage = ({ ...props }: HTMLProps<HTMLInputElement>) => {
         isSelected.current = false;
       }}
       onKeyDown={(e) => {
-        e.key === "Enter" && e.currentTarget.blur();
+        if (e.key === "Enter") {
+          e.currentTarget.blur();
+        }
       }}
       min={1}
       max={pages}
